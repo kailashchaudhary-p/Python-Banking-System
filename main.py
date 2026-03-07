@@ -1,12 +1,30 @@
 #Create a app banking statement with help python tkinter or SQL lite 
 # this is the welcome page of the app
 import tkinter as tk#this is the basic things
-root=tk.Tk()
-root.title("Kailash Bank") 
-root.geometry("800x700")
-#the tittle of the window
-tittle=tk.Label(root,text="WELCOME TO KAILASH BANK",
+
+
+
+class welcome_page:
+    def __init__(self):
+        self.root=tk.Tk()
+        self.root.title("Kailash Bank") 
+        self.root.geometry("1500x1200")
+
+        #background image 
+        image=tk.PhotoImage(file="ChatGPT Image Mar 6, 2026, 07_12_06 PM.png")
+        background=tk.Label(self.root,image=image)
+        background.place(x=250,y=0)
+         #TITTLE 
+        tittle=tk.Label(self.root,text="WELCOME TO KAILASH BANK",
                     font=("Arila",20,"bold"),              
                     bg="#f0f0f0",fg="#333333")
-tittle.pack(pady=20)
-root.mainloop()
+        tittle.pack(pady=20)
+        #Login button
+        login_button=tk.Button(self.root,text="login",width=50)
+        login_button.pack(pady=50)
+        #create new account button
+        create_account=tk.Button(self.root,text="Create New Account",width=50)
+        create_account.pack(pady=50)
+        self.root.mainloop()
+        
+obj=welcome_page()
