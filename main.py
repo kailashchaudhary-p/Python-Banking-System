@@ -26,6 +26,5 @@ class welcome_page:
         #create new account button
         create_account=tk.Button(self.root,text="Create New Account",width=50)
         create_account.place(x=1100, y=400)
-        self.root.mainloop()
-        
+       
 obj=welcome_page()
