@@ -16,10 +16,10 @@ class welcome_page:
         background.place(x=0,y=0)
        
          #TITTLE 
-        tittle=tk.Label(self.root,text="WELCOME TO KAILASH BANK",
-                    font=("Arila",20,"bold"),              
+        title=tk.Label(self.root,text="WELCOME TO KAILASH BANK",
+                    font=("Arial",20,"bold"),              
                     bg="#f0f0f0",fg="#333333")
-        tittle.pack(pady=40)
+        title.pack(pady=40)
         #Login button
         login_button=tk.Button(self.root,text="login",width=50)
         login_button.place(x=1100,y=600)

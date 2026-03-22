@@ -9,12 +9,12 @@ class AddNewAccount:
         self.root.geometry("1500x900")
 
         # Background Image
-        self.bg_image = tk.PhotoImage(file="ChatGPT Image Mar 9, 2026, 09_53_21 PM.png")
-        self.bg = tk.Label(self.root, image=self.bg_image)
-        self.bg.place(x=0, y=0, relwidth=1, relheight=1)
+        # self.bg_image = tk.PhotoImage(file="1768579.jpg")
+        # self.bg = tk.Label(self.root, image=self.bg_image)
+        # self.bg.place(x=0, y=0, relwidth=1, relheight=1)
 
         # Main Frame (Form)
-        self.frame = tk.Frame(self.root, bg="white")
+        self.frame = tk.Frame(self.root, bg="black")
         self.frame.place(x=550, y=200, width=400, height=450)
 
         # Title
@@ -54,10 +54,17 @@ class AddNewAccount:
         create_btn = tk.Button(self.frame, text="Create Account",
                                bg="green", fg="white",
                                font=("Arial", 12, "bold"),
-                               width=20)
+                               width=20, command=self.create_account)
         create_btn.pack(pady=30)
 
         self.root.mainloop()
+
+    def create_account(self):
+        name = self.name_entry.get()
+        mobile = self.mobile_entry.get()
+        address = self.address_entry.get()
+        password = self.password_entry.get()
+        print(f"Account created: Name={name}, Mobile={mobile}, Address={address}, Password={password}")
 
 
 obj = AddNewAccount()
