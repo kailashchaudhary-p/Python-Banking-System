@@ -1,30 +1,25 @@
-#Create a app banking statement with help python tkinter or SQL lite 
-# this is the welcome page of the app
-import tkinter as tk#this is the basic things
+import tkinter as tk
+from database import create_table
+from create_account import create_account_window
+from login import login_window
 
+create_table()
 
+root = tk.Tk()
+root.title("Banking App")
 
-class welcome_page:
-    def __init__(self):
-        self.root=tk.Tk()
-        self.root.title("Kailash Bank") 
-        self.root.geometry("1500x1200")
+# ✅ Full screen
+root.state('zoomed')   # Windows ke liye best
 
-        #background image 
-        image=tk.PhotoImage(file="Screenshot_1.png")
-        background=tk.Label(self.root,image=image)
-        background.place(x=0,y=0)
-       
-         #TITTLE 
-        title=tk.Label(self.root,text="WELCOME TO KAILASH BANK",
-                    font=("Arial",20,"bold"),              
-                    bg="#f0f0f0",fg="#333333")
-        title.pack(pady=40)
-        #Login button
-        login_button=tk.Button(self.root,text="login",width=50)
-        login_button.place(x=1100,y=600)
-        #create new account button
-        create_account=tk.Button(self.root,text="Create New Account",width=50)
-        create_account.place(x=1100, y=400)
-       
-obj=welcome_page()
+# (Alternative method)
+# root.geometry("1200x700")
+
+tk.Label(root, text="Banking System", font=("Arial", 24, "bold")).pack(pady=20)
+
+tk.Button(root, text="Create Account", width=25, height=2,
+          command=lambda: create_account_window(root)).pack(pady=10)
+
+tk.Button(root, text="Login", width=25, height=2,
+          command=lambda: login_window(root)).pack(pady=10)
+
+root.mainloop()
