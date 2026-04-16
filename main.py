@@ -1,25 +1,29 @@
 import tkinter as tk
-from database import create_table
-from create_account import create_account_window
 from login import login_window
+from create_account import create_account_window, create_table
 
-create_table()
+class Banking_app:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Banking App")
+        self.root.geometry("1400x1250")
 
-root = tk.Tk()
-root.title("Banking App")
+        create_table()
 
-# ✅ Full screen
-root.state('zoomed')   # Windows ke liye best
+        self.main_frame = tk.Frame(self.root)
+        self.main_frame.pack(pady=40)
 
-# (Alternative method)
-# root.geometry("1200x700")
+        tk.Label(self.main_frame, text="Welcome to Banking App", font=("Arial", 40)).grid(row=0, column=0, columnspan=2, pady=(0, 20))
+        tk.Button(self.main_frame, text="Login", width=20, command=self.open_login).grid(row=10, column=0, columnspan=2, pady=10)
+        tk.Button(self.main_frame, text="Create Account", width=20, command=self.open_create_account).grid(row=2, column=0, columnspan=2, pady=10)
 
-tk.Label(root, text="Banking System", font=("Arial", 24, "bold")).pack(pady=20)
+    def open_login(self):
+        login_window(self.root)
 
-tk.Button(root, text="Create Account", width=25, height=2,
-          command=lambda: create_account_window(root)).pack(pady=10)
+    def open_create_account(self):
+        create_account_window(self.root)
 
-tk.Button(root, text="Login", width=25, height=2,
-          command=lambda: login_window(root)).pack(pady=10)
-
-root.mainloop()
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = Banking_app(root)
+    root.mainloop()

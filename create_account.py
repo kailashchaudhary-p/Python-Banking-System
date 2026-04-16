@@ -2,6 +2,18 @@ import tkinter as tk
 from tkinter import messagebox
 from database import cursor, conn
 
+def create_table():
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS accounts(
+        acc_no INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        pin TEXT,
+        balance REAL
+    )
+    """)
+    conn.commit()
+
+
 def create_account_window(root):
 
     def save_account():
