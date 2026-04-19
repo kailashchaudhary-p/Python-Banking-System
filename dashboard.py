@@ -4,9 +4,15 @@ from database import cursor, conn
 
 def open_dashboard(root, user):
 
+    def add_back_button(window, previous):
+        tk.Button(window, text="← Back", command=lambda: [window.destroy(), previous.deiconify()],
+                  font=("Arial", 10), bg='#2A5298', fg='white').place(relx=0.98, rely=0.03, anchor='ne')
+
     dash = tk.Toplevel(root)
     dash.title("Dashboard")
     dash.geometry("500x500")
+    dash.protocol("WM_DELETE_WINDOW", lambda: [dash.destroy(), root.deiconify()])
+    add_back_button(dash, root)
 
     acc_no = user[0]
     user_name = user[1]
@@ -91,6 +97,6 @@ def open_dashboard(root, user):
     tk.Button(button_frame, text="Withdraw", command=withdraw, 
              font=("Arial", 10), bg='#FFC107', fg='black',
              width=18, pady=8).pack(pady=5)
-    tk.Button(button_frame, text="Logout", command=dash.destroy, 
+    tk.Button(button_frame, text="Logout", command=lambda: [dash.destroy(), root.deiconify()], 
              font=("Arial", 10), bg='#C41E3A', fg='white',
              width=18, pady=8).pack(pady=5)

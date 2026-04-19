@@ -4,6 +4,10 @@ from database import cursor, conn
 
 def create_account_window(root):
 
+    def add_back_button(window, previous):
+        tk.Button(window, text="← Back", command=lambda: [window.destroy(), previous.deiconify()],
+                  font=("Arial", 10), bg='#2A5298', fg='white').place(relx=0.98, rely=0.03, anchor='ne')
+
     def save_account():
         acc_no = entry_acc.get()
         name = entry_name.get()
@@ -47,9 +51,12 @@ def create_account_window(root):
         except Exception as e:
             messagebox.showerror("Error", f"Failed to create account: {str(e)}")
 
+    root.withdraw()
     win = tk.Toplevel(root)
     win.title("Create Account")
     win.geometry("450x450")
+    win.protocol("WM_DELETE_WINDOW", lambda: [win.destroy(), root.deiconify()])
+    add_back_button(win, root)
 
     tk.Label(win, text="Create New Account", font=("Arial", 18, "bold"), fg='#1E3C72').pack(pady=20)
 

@@ -80,9 +80,11 @@ class WelcomePage:
         self.root.mainloop()
 
     def user_login(self):
+        self.root.withdraw()
         login_window(self.root)
 
     def create_account(self):
+        self.root.withdraw()
         create_account_window(self.root)
 
 
